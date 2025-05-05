@@ -2,10 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,10 +24,10 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'News', href: '#news' },
-    { name: 'Team', href: '#team' },
-    { name: 'Donate', href: '#donate' },
+    { name: t('home'), href: '#home' },
+    { name: t('news'), href: '#news' },
+    { name: t('team'), href: '#team' },
+    { name: t('donate'), href: '#donate' },
   ];
 
   return (
@@ -33,15 +36,6 @@ const Navbar = () => {
         <a href="#" className="flex items-center">
           <span className="text-gaza-primary font-heading text-2xl font-bold">Gaza Aid Initiative</span>
         </a>
-
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden text-gaza-primary"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
@@ -54,13 +48,29 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <Button 
-            className="donation-button"
-            onClick={() => document.getElementById('donate')?.scrollIntoView({behavior: 'smooth'})}
-          >
-            Donate Now
-          </Button>
+          
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <Button 
+              className="donation-button"
+              onClick={() => document.getElementById('donate')?.scrollIntoView({behavior: 'smooth'})}
+            >
+              {t('donateNow')}
+            </Button>
+          </div>
         </nav>
+
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center gap-4">
+          <LanguageSwitcher />
+          <button
+            className="text-gaza-primary"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
@@ -84,7 +94,7 @@ const Navbar = () => {
                 setIsMenuOpen(false);
               }}
             >
-              Donate Now
+              {t('donateNow')}
             </Button>
           </div>
         </div>

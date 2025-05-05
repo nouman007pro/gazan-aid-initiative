@@ -1,119 +1,34 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 195 33% 98%;
-    --foreground: 200 70% 12%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 200 70% 12%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 200 70% 12%;
-
-    --primary: 200 58% 29%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 199 48% 46%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 195 33% 94%;
-    --muted-foreground: 200 30% 40%;
-
-    --accent: 36 87% 51%;
-    --accent-foreground: 36 100% 15%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 200 20% 86%;
-    --input: 200 20% 86%;
-    --ring: 200 58% 29%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+@layer components {
+  .donation-button {
+    @apply bg-gaza-accent text-white font-bold py-3 px-6 rounded-md hover:bg-gaza-accent/90 transition-colors;
   }
 
-  .dark {
-    --background: 200 70% 12%;
-    --foreground: 195 33% 98%;
-
-    --card: 200 60% 15%;
-    --card-foreground: 195 33% 98%;
-
-    --popover: 200 60% 15%;
-    --popover-foreground: 195 33% 98%;
-
-    --primary: 200 58% 29%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 199 48% 46%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 200 40% 20%;
-    --muted-foreground: 200 30% 70%;
-
-    --accent: 36 87% 51%;
-    --accent-foreground: 36 100% 97%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 200 30% 25%;
-    --input: 200 30% 25%;
-    --ring: 200 58% 50%;
-    
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  .section-heading {
+    @apply text-3xl md:text-4xl font-heading font-bold text-gaza-primary mb-6 max-w-2xl;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-body;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold;
-  }
+/* RTL Support */
+.rtl-content {
+  direction: rtl;
 }
 
-.donation-button {
-  @apply bg-gaza-accent hover:bg-amber-500 text-white font-bold py-3 px-6 rounded-md transition-all transform hover:scale-105 hover:shadow-lg;
+.rtl-content .flex-row {
+  flex-direction: row-reverse;
 }
 
-.section-heading {
-  @apply text-3xl md:text-4xl font-heading font-bold text-gaza-primary mb-6 relative;
+/* Fix for grid in RTL mode */
+.rtl-content .grid {
+  direction: rtl;
 }
 
-.section-heading::after {
-  content: "";
-  @apply absolute bottom-0 left-0 w-16 h-1 bg-gaza-accent block -mb-3;
-}
-
-.card-hover {
-  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+/* Fix dropdown alignment in RTL mode */
+.rtl .dropdown {
+  left: auto;
+  right: 0;
 }

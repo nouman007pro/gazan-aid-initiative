@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { HandCoins, Bed } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface DonationVisualizationProps {
   lastDonationAmount?: number;
@@ -14,6 +15,7 @@ const DonationVisualization = ({
   onAnimationComplete
 }: DonationVisualizationProps) => {
   const [animationState, setAnimationState] = useState<'idle' | 'giving' | 'complete'>('idle');
+  const { t } = useLanguage();
   
   useEffect(() => {
     if (showAnimation && animationState === 'idle') {
@@ -32,7 +34,7 @@ const DonationVisualization = ({
   return (
     <div className="max-w-md mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
       <h3 className="text-2xl font-semibold text-gaza-primary text-center mb-6">
-        Your Donation In Action
+        {t('yourDonationInAction')}
       </h3>
       
       <div className="relative h-40 flex items-center justify-center">
@@ -59,7 +61,7 @@ const DonationVisualization = ({
             />
           </div>
           
-          <span className="mt-2 font-semibold text-gaza-dark">Donor</span>
+          <span className="mt-2 font-semibold text-gaza-dark">{t('donor')}</span>
         </div>
         
         {/* Arrow in middle */}
@@ -86,14 +88,14 @@ const DonationVisualization = ({
             />
           </div>
           
-          <span className="mt-2 font-semibold text-gaza-dark">Gaza Family</span>
+          <span className="mt-2 font-semibold text-gaza-dark">{t('gazaFamily')}</span>
         </div>
       </div>
       
       {lastDonationAmount > 0 && (
         <div className="text-center mt-4">
           <p className="text-gaza-primary font-medium">
-            ${lastDonationAmount} provides shelter & essentials to families in need
+            ${lastDonationAmount} {t('providesEssentials')}
           </p>
         </div>
       )}
