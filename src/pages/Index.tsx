@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import DonationSection from '@/components/DonationSection';
@@ -15,8 +15,10 @@ const Index = () => {
   const { language } = useLanguage();
   useRTL(); // Apply RTL styling when needed
   
+  const isRTL = language === 'ar' || language === 'ur';
+  
   return (
-    <div className={`min-h-screen ${(language === 'ar' || language === 'ur') ? 'rtl-content' : ''}`}>
+    <div className={`min-h-screen ${isRTL ? 'rtl-content' : ''}`}>
       <Navbar />
       <Hero />
       <NewsSection />

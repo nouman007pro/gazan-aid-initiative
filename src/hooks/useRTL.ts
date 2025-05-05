@@ -19,16 +19,10 @@ export const useRTL = () => {
       document.body.classList.remove('rtl');
     }
     
-    // Additional RTL styles
-    if (isRTL) {
-      document.body.style.textAlign = 'right';
-    } else {
-      document.body.style.textAlign = 'left';
-    }
-    
     return () => {
       // Cleanup
-      document.body.style.textAlign = '';
+      document.documentElement.removeAttribute('dir');
+      document.body.classList.remove('rtl');
     };
   }, [language]);
 };

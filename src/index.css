@@ -5,7 +5,11 @@
 
 @layer components {
   .donation-button {
-    @apply bg-gaza-accent text-white font-bold py-3 px-6 rounded-md hover:bg-gaza-accent/90 transition-colors;
+    @apply bg-gaza-accent text-white font-bold py-3 px-6 rounded-md transition-all duration-300;
+  }
+  
+  .donation-button:hover {
+    @apply bg-gaza-accent/80 transform scale-105;
   }
 
   .section-heading {
@@ -16,6 +20,7 @@
 /* RTL Support */
 .rtl-content {
   direction: rtl;
+  text-align: right;
 }
 
 .rtl-content .flex-row {
@@ -31,4 +36,18 @@
 .rtl .dropdown {
   left: auto;
   right: 0;
+}
+
+/* Fix button hover states */
+button:hover {
+  @apply transition-all duration-300;
+}
+
+/* Fix card hover effects */
+.card-hover {
+  @apply transition-all duration-300;
+}
+
+.card-hover:hover {
+  @apply shadow-lg transform translate-y-[-5px];
 }
