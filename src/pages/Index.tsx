@@ -6,6 +6,7 @@ import DonationSection from '@/components/DonationSection';
 import NewsSection from '@/components/NewsSection';
 import TeamSection from '@/components/TeamSection';
 import DonationMethodsSection from '@/components/DonationMethodsSection';
+import DonationGraph from '@/components/DonationGraph';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -14,6 +15,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <NewsSection />
+      <DonationGraph />
       <TeamSection />
       <DonationSection />
       <DonationMethodsSection />

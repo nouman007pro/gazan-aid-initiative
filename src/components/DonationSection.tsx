@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -6,25 +5,45 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Banknote } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import DonationVisualization from './DonationVisualization';
 
 const DonationSection = () => {
   const [amount, setAmount] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [showAnimation, setShowAnimation] = useState<boolean>(false);
+  const [lastDonationAmount, setLastDonationAmount] = useState<number>(0);
   const { toast } = useToast();
   
   const predefinedAmounts = ["5", "10", "25", "50", "100", "500"];
 
   const handleDonation = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Set the last donation amount for the visualization
+    setLastDonationAmount(Number(amount));
+    
+    // Show the animation
+    setShowAnimation(true);
+    
     toast({
       title: "Thank you for your donation!",
       description: `Your donation of $${amount} will help provide essential aid to families in Gaza.`,
     });
-    // In a real application, this would connect to a payment processor
-    setAmount("");
-    setName("");
-    setEmail("");
+    
+    // Reset form after a brief delay
+    setTimeout(() => {
+      setAmount("");
+      setName("");
+      setEmail("");
+    }, 2500);
+  };
+
+  const handleAnimationComplete = () => {
+    // Reset animation flag after animation completes
+    setTimeout(() => {
+      setShowAnimation(false);
+    }, 1000);
   };
 
   return (
@@ -34,6 +53,13 @@ const DonationSection = () => {
         <p className="text-center text-lg text-gaza-dark max-w-2xl mx-auto mb-12">
           Your support provides essential aid to those affected by the crisis. Every donation makes a meaningful difference in someone's life.
         </p>
+        
+        {/* Donation Visualization */}
+        <DonationVisualization 
+          lastDonationAmount={lastDonationAmount}
+          showAnimation={showAnimation}
+          onAnimationComplete={handleAnimationComplete}
+        />
 
         <div className="max-w-4xl mx-auto">
           <Card className="p-6 md:p-8">
