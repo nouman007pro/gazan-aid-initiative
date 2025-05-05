@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { HandCoins, Bread } from 'lucide-react';
+import { HandCoins, Bed } from 'lucide-react';
 
 interface DonationVisualizationProps {
   lastDonationAmount?: number;
@@ -36,7 +36,7 @@ const DonationVisualization = ({
       </h3>
       
       <div className="relative h-40 flex items-center justify-center">
-        {/* Rich hand with bread */}
+        {/* Rich hand with food */}
         <div className={`absolute left-2 transition-all duration-1000 ease-in-out flex flex-col items-center
           ${animationState === 'idle' ? 'opacity-100' : 'opacity-50'}
           ${animationState === 'giving' ? 'transform translate-x-20' : ''}
@@ -48,12 +48,12 @@ const DonationVisualization = ({
             />
           </div>
           
-          {/* Bread that moves */}
+          {/* Food item that moves */}
           <div className={`absolute top-6 left-12 transition-all duration-1000 ease-in-out
             ${animationState === 'idle' ? 'opacity-100' : ''}
             ${animationState === 'giving' ? 'transform translate-x-20' : ''}
           `}>
-            <Bread 
+            <Bed 
               size={24} 
               className="text-amber-700"
             />
@@ -76,11 +76,11 @@ const DonationVisualization = ({
             />
           </div>
           
-          {/* Bread received */}
+          {/* Food received */}
           <div className={`absolute top-6 right-12 transition-opacity duration-300
             ${animationState === 'complete' ? 'opacity-100' : 'opacity-0'}
           `}>
-            <Bread 
+            <Bed 
               size={24}
               className="text-amber-700" 
             />
@@ -93,7 +93,7 @@ const DonationVisualization = ({
       {lastDonationAmount > 0 && (
         <div className="text-center mt-4">
           <p className="text-gaza-primary font-medium">
-            ${lastDonationAmount} provides food & essentials to families in need
+            ${lastDonationAmount} provides shelter & essentials to families in need
           </p>
         </div>
       )}
