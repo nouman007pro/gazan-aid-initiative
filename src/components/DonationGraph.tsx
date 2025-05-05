@@ -51,9 +51,9 @@ const DonationGraph = () => {
         <div className="flex flex-col md:flex-row items-center justify-between mb-8">
           <h2 className="section-heading">Donation Impact</h2>
           <div className="flex items-center space-x-2 mt-4 md:mt-0">
-            <ChartPie className="text-gaza-primary" size={20} />
+            <ChartPie className="text-yellow-500" size={20} />
             <span className="text-gaza-dark font-semibold">{totalDonors} Contributors</span>
-            <span className="text-gaza-accent font-bold">${totalAmount.toLocaleString()}</span>
+            <span className="bg-yellow-500 text-white font-bold px-3 py-1 rounded-md">${totalAmount.toLocaleString()}</span>
           </div>
         </div>
 
@@ -72,7 +72,12 @@ const DonationGraph = () => {
                   width={80}
                 />
                 <ChartTooltip
-                  content={<ChartTooltipContent />}
+                  content={
+                    <ChartTooltipContent 
+                      className="bg-white border-2 border-yellow-500 shadow-lg" 
+                      labelClassName="font-bold text-yellow-600"
+                    />
+                  }
                   formatter={(value: any, name: any) => [`$${Number(value).toLocaleString()}`, 'Total']}
                   labelFormatter={(label) => `${label} Donations`}
                 />
@@ -85,7 +90,7 @@ const DonationGraph = () => {
                     dataKey="count" 
                     position="top" 
                     formatter={(value: any) => `${value} donors`} 
-                    style={{ fill: '#555', fontSize: '12px' }}
+                    style={{ fill: '#ffffff', fontSize: '12px', fontWeight: 'bold', textShadow: '0px 0px 2px rgba(0,0,0,0.5)' }}
                   />
                 </Bar>
               </BarChart>
@@ -94,7 +99,7 @@ const DonationGraph = () => {
 
           <div className="mt-4 grid grid-cols-2 md:grid-cols-5 gap-2 text-center">
             {data.map((category) => (
-              <div key={category.name} className="p-2">
+              <div key={category.name} className="p-2 hover:bg-yellow-50 transition-all rounded-md">
                 <div 
                   className="w-4 h-4 mx-auto mb-1 rounded-sm" 
                   style={{ backgroundColor: category.color }}

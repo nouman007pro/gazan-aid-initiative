@@ -5,11 +5,11 @@
 
 @layer components {
   .donation-button {
-    @apply bg-gaza-accent text-white font-bold py-3 px-6 rounded-md transition-all duration-300;
+    @apply bg-yellow-500 text-white font-bold py-3 px-6 rounded-md transition-all duration-300;
   }
   
   .donation-button:hover {
-    @apply bg-gaza-accent/80 transform scale-105;
+    @apply bg-yellow-600 transform scale-105;
   }
 
   .section-heading {
@@ -43,6 +43,15 @@ button:hover {
   @apply transition-all duration-300;
 }
 
+/* Fix all buttons with consistent hover */
+.btn, button[type="submit"], button[type="button"] {
+  @apply transition-all duration-300;
+}
+
+.btn:hover, button[type="submit"]:hover, button[type="button"]:hover {
+  @apply shadow-md transform scale-105;
+}
+
 /* Fix card hover effects */
 .card-hover {
   @apply transition-all duration-300;
@@ -51,3 +60,9 @@ button:hover {
 .card-hover:hover {
   @apply shadow-lg transform translate-y-[-5px];
 }
+
+/* Improve graph tooltip and hover styles */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  @apply bg-white text-gaza-dark border-gaza-primary shadow-lg !important;
+}
+

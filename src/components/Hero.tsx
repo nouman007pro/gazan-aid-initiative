@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
@@ -17,25 +18,26 @@ const Hero = () => {
               Your donations provide essential food, medical care, and shelter to Palestinian families affected by the ongoing crisis. Help us make a difference today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <Button 
                 onClick={() => document.getElementById('donate')?.scrollIntoView({behavior: 'smooth'})}
-                className="donation-button animate-pulse-gentle"
+                className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-md transition-all"
               >
                 Donate Now
-              </button>
-              <button 
+              </Button>
+              <Button 
                 onClick={() => document.getElementById('news')?.scrollIntoView({behavior: 'smooth'})}
-                className="bg-white border-2 border-gaza-primary text-gaza-primary hover:bg-gaza-primary hover:text-white font-bold py-3 px-6 rounded-md transition-all"
+                variant="outline"
+                className="hover:bg-yellow-500 hover:text-white border-2 border-gaza-primary"
               >
                 Latest Updates
-              </button>
+              </Button>
             </div>
           </div>
           
           {/* Right image */}
           <div className="w-full md:w-1/2">
             <div className="relative">
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-gaza-accent rounded-full opacity-20"></div>
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-yellow-500 rounded-full opacity-20"></div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gaza-primary rounded-full opacity-20"></div>
               <img 
                 src="https://images.unsplash.com/photo-1517022812141-23620dba5c23" 
@@ -50,7 +52,7 @@ const Hero = () => {
       {/* Scroll down indicator */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
         <span className="text-sm text-gaza-dark mb-2">Learn More</span>
-        <ArrowDown className="animate-bounce text-gaza-accent" size={24} />
+        <ArrowDown className="animate-bounce text-yellow-500" size={24} />
       </div>
     </section>
   );
